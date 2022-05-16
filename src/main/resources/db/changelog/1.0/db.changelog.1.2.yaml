@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      author: Musayev Anar
+      id: create authors_books table
+      changes:
+        - createTable:
+            tableName: authors_books
+            columns:
+              - column:
+                  name: book_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: books
+                    references: books(id)
+              - column:
+                  name: author_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: authors
+                    references: authors(id)

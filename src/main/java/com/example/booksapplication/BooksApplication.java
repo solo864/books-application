@@ -17,8 +17,6 @@ import java.util.Set;
 @SpringBootApplication
 public class BooksApplication  {
 
-    @Autowired
-    private UserRepository userRepository;
 
 
     public static void main(String[] args) {

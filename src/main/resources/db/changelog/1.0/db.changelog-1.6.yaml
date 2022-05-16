@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      author: Musayev Anar
+      id: create user_authorities table
+      changes:
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: users
+                    references: users(id)
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: roles
+                    references: roles(id)

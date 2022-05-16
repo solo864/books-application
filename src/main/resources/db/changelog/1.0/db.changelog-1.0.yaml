@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      author: Musayev Anar
+      id: create publisher table
+      changes:
+        - createTable:
+            tableName: publishers
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: created_year
+                  type: INT
+                  constraints:
+                    nullable: false
