@@ -2,6 +2,8 @@ package com.example.booksapplication.config;
 
 import com.example.booksapplication.security.filter.CustomAuthenticationFilter;
 import com.example.booksapplication.security.filter.CustomAuthorizationFilter;
+import com.example.booksapplication.security.handler.SimpleAccessDeniedHandler;
+import com.example.booksapplication.security.handler.SimpleAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,13 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.exceptionHandling().accessDeniedHandler(new SimpleAccessDeniedHandler()).authenticationEntryPoint(new SimpleAuthenticationEntryPoint());
+
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/v1/auth/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
-        http.authorizeRequests().antMatchers("v1/auth/login/**", "/v1/auth/token/refresh/**", "/v1/users").permitAll();
-        http.authorizeRequests().antMatchers(GET, "/api/userss").hasAnyAuthority("ROLE_USER");
-        http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/v1/users").permitAll();
+        http.authorizeRequests().antMatchers("v1/auth/login/**", "/v1/auth/token/refresh/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
