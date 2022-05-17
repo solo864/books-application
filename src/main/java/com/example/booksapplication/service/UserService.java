@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -23,7 +22,6 @@ import static com.example.booksapplication.model.constants.ExceptionConstants.*;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 @Slf4j
 public class UserService implements UserDetailsService {
 
@@ -45,7 +43,6 @@ public class UserService implements UserDetailsService {
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
         }
     }
-
 
     public void registerUser(UserRegisterDto user) {
         log.info("ActionLog.registerUser.start");
