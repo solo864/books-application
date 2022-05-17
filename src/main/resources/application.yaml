@@ -21,3 +21,7 @@ spring:
       matching-strategy: ant_path_matcher
 server:
   port: 8085
+
+
+private:
+  key: QuwseOVacwFrOx2OjbsOmG1SKncnMPpFTQ0Dam2L/i4
