@@ -16,9 +16,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-import static com.example.booksapplication.model.constants.ExceptionConstants.*;
+import static com.example.booksapplication.model.constants.ExceptionConstants.VALIDATION_EXCEPTION_CODE;
+import static com.example.booksapplication.model.constants.ExceptionConstants.VALIDATION_MESSAGE;
 
 @Service
 @RequiredArgsConstructor
@@ -63,6 +67,10 @@ public class UserService implements UserDetailsService {
         }
     }
 
+
+    public void hey() {
+        System.out.println("HEY EVERYONE");
+    }
 
     public UserEntity findByUsername(String username) {
         log.info("Fetching user {}", username);
