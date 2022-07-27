@@ -31,7 +31,7 @@ public class AuthService {
 
     private final UserService userService;
 
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void docekrrefreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String authorizationHeader = request.getHeader(AUTHORIZATION);
         if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             try {
