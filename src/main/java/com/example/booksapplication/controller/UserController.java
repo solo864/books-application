@@ -22,6 +22,11 @@ public class UserController {
         userService.registerUser(user);
     }
 
+    @GetMapping
+    public void hey() {
+        userService.hey();
+    }
+
 }
 
 
