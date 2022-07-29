@@ -17,7 +17,6 @@ public class AuthController {
 
     private final AuthService tokenService;
 
-
 //    @GetMapping("/token/refresh")
 //    public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        tokenService.refreshToken(request, response);
